@@ -9,13 +9,15 @@
 };
 firebase.initializeApp(config);
 
+const username = prompt('deme su nombre')
+
 const database = firebase.database();
 
 $('button').click( function(event){
   event.preventDefault ();
   var mensaje = $('#mensaje').val() ;
 
-  var data = { usuario: 'pablo', mensaje: mensaje };
+  var data = { usuario: username, mensaje: mensaje };
   database.ref('chat/').push(data, function(err){
     if (err) {throw err; }
     else {
